@@ -1,6 +1,6 @@
 // (c) Anuflora Systems
 
-//
+//This exercise is to revise original .js to output only the total balance.
 const balance = document.getElementById('balance');
 const money_plus = document.getElementById('deposit');
 const money_minus = document.getElementById('loan');
@@ -79,23 +79,22 @@ function filterTransaction(e) {
   list.innerHTML = '';
   //reco.innerHTML = ''; //this is doing nothing
   TransactionData = TransactionDataAll.filter(tran => tran.customername == custname.value);
-
-  //next use .reduce to ...and redefine TransactionData.
-
   console.log(TransactionData);
   updateValues();                                   //calls 3    
-  
-  
-  //Start editing here : 
+    
+ //Start editing here : 
  // TransactionData.forEach(addTransactionDOM);       //calls 2
    
   
 //balance
 const totalbalance = document.createElement('li');
-totalbalance.innerHTML = `${custname.value}-allbanks combined ${TransactionData[0]["bank"]} <span> $${(bal)}</span>`;
+//arrlength = TransactionData.length;
+
+let mybanks = TransactionData.map(x =>x.bank);
+console.log(mybanks);
+
+totalbalance.innerHTML = `${custname.value} : total Holdings@:  ${mybanks} <span> $${(bal)}</span>`;
 list.appendChild(totalbalance);
-
-
 }
 
 init();
